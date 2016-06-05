@@ -54,7 +54,7 @@
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="#" data-nav-section="Evenements"><span>Événements</span></a></li>
-								<li><a href="#" data-nav-section="Configurations"><span>Points</span></a></li>
+								<li><a href="#" data-nav-section="Points"><span>Points</span></a></li>
 								<li><a href="#" data-nav-section="Paris"><span>Paris</span></a></li>
 								<li><a href="#" data-nav-section="Configurations"><span>Configurations</span></a></li>
 		          </ul>
@@ -71,8 +71,15 @@
 				<div class="text-inner">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h2 class="to-animate">Ajouter/Supprimer un événement et les points/paris associés</h2>
-							<div  class="table-responsive" style="margin-top:50px; height:250px; overflow:auto; border: 1px groove rgba(146, 146, 146, 0.25)">
+							<h2 class="to-animate" style="color: rgba(255, 255, 255, 1)">Ajouter/Supprimer un événement et les Points/Paris associés</h2>
+							<div class="row" style="margin-top:50px">
+								<div class="col-md-8 col-md-offset-2" style="color:black">
+									<input id="event_input" maxlength="300" style="width:70%;background-color:rgba(240, 240, 240, 0.5)" type="text">
+									<button style="background-color:rgba(240, 240, 240, 0.5)" id="add_event"><i class="icon icon-plus"></i></button>
+									<button style="background-color:rgba(240, 240, 240, 0.5)" onClick="window.location.reload()"><i class="icon icon-refresh"></i></button>
+								</div>
+							</div>
+							<div  class="table-responsive" style="margin-top:20px; height:250px; overflow:auto; border: 1px groove rgba(146, 146, 146, 0.25)">
 								<table>
 									<% for (var i = 0; i < arg['events'].length; i++){ %>
 										<tr>
@@ -88,13 +95,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="row" style="margin-top:50px">
-						<div class="col-md-8 col-md-offset-2" style="color:black">
-							<input id="event_input" maxlength="300" style="width:70%" type="text">
-							<button id="add_event"><i class="icon icon-plus"></i></button>
-							<button onClick="window.location.reload()"><i class="icon icon-refresh"></i></button>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -102,11 +102,11 @@
 	</section>
 
 
-	<section id="fh5co-services" data-section="evenements">
+	<section id="fh5co-services" data-section="Points">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 section-heading text-left">
-					<h2 class=" left-border to-animate">Événements</h2>
+					<h2 class=" left-border to-animate">Gestion des Points</h2>
 					<div class="row">
 						<div class="col-md-8 subtext to-animate">
 							<h3>Pendant un an, l'équipe des JIG va vous proposer de multiples événements ! Le but ? Gagner avec votre équipe !</h3>
@@ -140,6 +140,26 @@
 					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
 				</div>
 
+			</div>
+		</div>
+	</section>
+
+
+	<section id="fh5co-counters" data-section="Configurations">
+		<div class="fh5co-overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 section-heading text-left">
+						<h2 class=" left-border to-animate">Configurations</h2>
+						<div class="row">
+							<div class="col-md-8 subtext to-animate">
+								<button id="reset_first" style="background-color:rgba(240, 240, 240, 0.5); color:white"><i style="margin-right:15px" class="icon icon-loop"></i>Réinitaliser tout</button>
+								<button style="display:none; background-color:rgba(240, 240, 240, 0.5); color:white" id="reset_all">Confirmer la suppression de toute la base ?</button>
+								<button style="display:none; background-color:rgba(240, 240, 240, 0.5); color:white" id="reset_all_final">Tu fais de la merde !</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -199,6 +219,18 @@
 			socket.emit('add_event', {
 				lib_event : document.getElementById("event_input").value
 			});
+		});
+
+		$("#reset_first").on('click', function() {
+			document.getElementById("reset_all").style.display = 'initial'
+		});
+
+		$("#reset_all").on('click', function() {
+			document.getElementById("reset_all_final").style.display = 'initial'
+		});
+
+		$("#reset_all_final").on('click', function() {
+			socket.emit('reset_data');
 		});
 
 		$.notify.addStyle('happyblue', {

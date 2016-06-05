@@ -28,10 +28,12 @@ module.exports = function(app, database, io) {
       myQuery1 = "DELETE FROM pari";
       myQuery2 = "DELETE FROM points";
       myQuery3 = "DELETE FROM evenements";
-      database.executeQuery(myQuery1);
-      database.executeQuery(myQuery2);
-      database.executeQuery(myQuery3);
-      socket.emit('end_reset');
+      //database.executeQuery(myQuery1);
+      //database.executeQuery(myQuery2);
+      //database.executeQuery(myQuery3);
+      socket.emit('end', {
+        msg: "Base de données réinitialisée !"
+      });
     });
   });
 }

@@ -33,7 +33,7 @@ th, td, tr {
     padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even){background-color: rgba(242, 242, 242, 0.22)}
 
 th {
     background-color: rgba(147, 224, 77, 1);
