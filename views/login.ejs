@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="css/style_log.css">
+<title><%= arg['title'] %></title>
+
+<div class="login-page">
+  <div class="form">
+
+    <% if (typeof arg['error'] != 'undefined') { %>
+     <div>
+       <p  style="margin-bottom:25px"><%= arg['error'] %></p>
+     </div>
+    <% } %>
+
+    <form class="login-form" action = "/login" method="post">
+      <input id="username" name="username" type="text" placeholder="Username"/>
+      <input id="password" name="password" type="password" placeholder="Password"/>
+      <button>Se connecter</button>
+    </form>
+  </div>
+</div>

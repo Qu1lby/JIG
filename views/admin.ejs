@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title><%= arg['title'] %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Jeux Inter-Groupes" />
+	<meta name="keywords" content="JIG, TELECOM Nancy" />
+	<meta name="author" content="Kilian Cuny" />
+
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Simple Line Icons -->
+	<link rel="stylesheet" href="css/simple-line-icons.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+
+	<body>
+	<header role="banner" id="fh5co-header">
+			<div class="container">
+				<!-- <div class="row"> -->
+			    <nav class="navbar navbar-default">
+		        <div class="navbar-header">
+		        	<!-- Mobile Toggle Menu Button -->
+							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+		         	<a class="navbar-brand" href="index.html">Jeux Inter-Groupes</a>
+		        </div>
+		        <div id="navbar" class="navbar-collapse collapse">
+		          <ul class="nav navbar-nav navbar-right">
+		            <li class="active"><a href="#" data-nav-section="Evenements"><span>Événements</span></a></li>
+								<li><a href="#" data-nav-section="Configurations"><span>Points</span></a></li>
+								<li><a href="#" data-nav-section="Paris"><span>Paris</span></a></li>
+								<li><a href="#" data-nav-section="Configurations"><span>Configurations</span></a></li>
+		          </ul>
+		        </div>
+			    </nav>
+			  <!-- </div> -->
+		  </div>
+	</header>
+
+	<section id="fh5co-home" data-section="Evenements" style="background-image: url(images/full_image_2.jpg);" data-stellar-background-ratio="0.65">
+		<div class="gradient"></div>
+		<div class="container">
+			<div class="text-wrap" style="height:750px">
+				<div class="text-inner">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<h2 class="to-animate">Ajouter/Supprimer un événement et les points/paris associés</h2>
+							<div  class="table-responsive" style="margin-top:50px; height:250px; overflow:auto; border: 1px groove rgba(146, 146, 146, 0.25)">
+								<table>
+									<% for (var i = 0; i < arg['events'].length; i++){ %>
+										<tr>
+											<td style="color:black;"><%= arg['events'][i].libelle %></td>
+											<td style="color:black;">
+												<a class="trash_event" href="#" id_event="<%= arg['events'][i].id %>">
+													<i class="icon to-animate icon-trash" style="color:black"></i>
+												</a>
+											</td>
+										</tr>
+									<% } %>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="row" style="margin-top:50px">
+						<div class="col-md-8 col-md-offset-2" style="color:black">
+							<input id="event_input" maxlength="300" style="width:70%" type="text">
+							<button id="add_event"><i class="icon icon-plus"></i></button>
+							<button onClick="window.location.reload()"><i class="icon icon-refresh"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="slant"></div>
+	</section>
+
+
+	<section id="fh5co-services" data-section="evenements">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-left">
+					<h2 class=" left-border to-animate">Événements</h2>
+					<div class="row">
+						<div class="col-md-8 subtext to-animate">
+							<h3>Pendant un an, l'équipe des JIG va vous proposer de multiples événements ! Le but ? Gagner avec votre équipe !</h3>
+							<h3>Et cette année, les 2A et 3A fusionnent selon leur spécialité et l'équipe des profs fera son grand retour dans la compétition ! </h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+					<i class="icon to-animate-2 icon-trophy"></i>
+					<h3>Bowling</h3>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				</div>
+				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+					<i class="icon to-animate-2 icon-monitor"></i>
+					<h3>Soirée Jeux-Télé</h3>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				</div>
+
+				<div class="clearfix visible-sm-block"></div>
+
+				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+					<i class="icon to-animate-2 icon-shield"></i>
+					<h3>LaserMaxx</h3>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				</div>
+				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+					<i class="icon to-animate-2 icon-flag"></i>
+					<h3>Evenement Final</h3>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<footer id="footer" role="contentinfo">
+		<div class="container">
+			<div class="">
+				<div class="col-md-12 text-center">
+					<p>&copy; JIG TELECOM Nancy <br>Developpé par Kilian</p>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<ul class="social social-circle">
+						<li><a target="blank" href="https://www.facebook.com/JeuxInterGroupes/"><i class="icon-facebook"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Counter -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Google Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="js/google_map.js"></script>
+
+	<!-- Main JS (Do not remove) -->
+	<script src="js/main.js"></script>
+	<script src="js/socket.io-1.3.5.js"></script>
+	<script src="js/notify.min.js"></script>
+
+	<script>
+	  var socket = io();
+
+		$(".trash_event").on('click', function() {
+			socket.emit('del_event', {
+				id_event : $(this).attr('id_event')
+			});
+		});
+
+		$("#add_event").on('click', function() {
+			socket.emit('add_event', {
+				lib_event : document.getElementById("event_input").value
+			});
+		});
+
+		$.notify.addStyle('happyblue', {
+		  html: "<div><span data-notify-text/></div>",
+		  classes: {
+		    base: {
+		      "white-space": "nowrap",
+		      "background-color": "white",
+		      "padding": "5px",
+					"border": "1px groove"
+		    }
+		  }
+		});
+
+		socket.on('end', function(data){
+			$.notify(data.msg,{position:"bottom right", style:"happyblue"});
+		});
+	</script>
+
+	</body>
+</html>

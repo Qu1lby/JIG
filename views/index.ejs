@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title><%= arg['title'] %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Jeux Inter-Groupes" />
+	<meta name="keywords" content="JIG, TELECOM Nancy" />
+	<meta name="author" content="Kilian Cuny" />
+
+  <!--
+	//////////////////////////////////////////////////////
+
+	FREE HTML5 TEMPLATE
+	DESIGNED & DEVELOPED by FREEHTML5.CO
+
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Simple Line Icons -->
+	<link rel="stylesheet" href="css/simple-line-icons.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+
+	<body>
+	<header role="banner" id="fh5co-header">
+			<div class="container">
+				<!-- <div class="row"> -->
+			    <nav class="navbar navbar-default">
+		        <div class="navbar-header">
+		        	<!-- Mobile Toggle Menu Button -->
+							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+		         	<a class="navbar-brand" href="index.html">Jeux Inter-Groupes</a>
+		        </div>
+		        <div id="navbar" class="navbar-collapse collapse">
+		          <ul class="nav navbar-nav navbar-right">
+		            <li class="active"><a href="#" data-nav-section="home"><span>Home</span></a></li>
+		            <li><a href="#" data-nav-section="paris"><span>Parier en direct</span></a></li>
+		            <li><a href="#" data-nav-section="scores"><span>Classement</span></a></li>
+								<li><a href="#" data-nav-section="evenements"><span>Événements</span></a></li>
+								<li><a href="#" data-nav-section="equipe"><span>L'Équipe</span></a></li>
+		          </ul>
+		        </div>
+			    </nav>
+			  <!-- </div> -->
+		  </div>
+	</header>
+
+	<section id="fh5co-home" data-section="home" style="background-image: url(images/full_image_2.jpg);" data-stellar-background-ratio="0.65">
+		<div class="gradient"></div>
+		<div class="container">
+			<div class="text-wrap" style="height:600px">
+				<div class="text-inner">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<img src="images/logo_jig.png" class="img-responsive" style="display:initial"></img>
+							<h2 class="to-animate">La plus grosse compétition annuelle de Télécom Nancy</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="slant"></div>
+	</section>
+
+	<section id="fh5co-testimonials" data-section="paris">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="to-animate">Parier en direct</h2>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 subtext to-animate">
+							<h3>Les paris sont un bon moyen de gagner (ou de perdre) des points !</h3>
+              <% if(arg['pari'].length != 0) { %>
+  							<h4 style="text-aligne:center"><%= arg['pari'][0].libelle %></h4>
+  							<table>
+  							  <tr>
+  									<th>Pari sur</th>
+  							    <th>Total des points</th
+  							  </tr>
+  								<% for (var i = 0; i < arg['pari'].length; i++){ %>
+  									<tr>
+  										<td><%= arg['pari'][i].nom_pari %></td>
+  										<td><%= arg['pari'][i].points %></td>
+  									</tr>
+  							<% } %>
+  							</table>
+              <% } else { %>
+                <h4 style="text-aligne:center">Rien pour l'instant, revenez plus tard !</h4>
+              <% } %>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="fh5co-counters" data-section="scores" data-stellar-background-ratio="0.5">
+		<div class="fh5co-overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-center">
+					<h2>Classement Officiel</h2>
+				</div>
+			</div>
+			<div class="row" style="color:white">
+				<% for (var i = 0; i < arg['classement'].length; i++){
+					if (i==4 || i==8){ %>
+						</div>
+						<div class="row" style="margin-top:70px; color:white">
+					<% } %>
+
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<% if (i%2 == 0){ %>
+							<div class="fh5co-counter" style="text-align: center; background-color:rgba(147, 224, 77, 0.4); border: 1px groove #ddd;">
+						<%} else {%>
+							<div class="fh5co-counter" style="text-align: center; background-color:rgba(146, 146, 146, 0.76); border: 1px groove #ddd;">
+						<% } %>
+
+							<span class="fh5co-counter-label" style="color: rgba(255, 255, 255, 0.7)">
+								<% if (i==0){ %>
+									<%=i+1 %>er
+								<%} else {%>
+									<%= i + 1%><span style="font-size:0.9em">e</span>
+								<% } %>
+							</span>
+							<div style="height:180px; vertical-align: middle;">
+								<img class="img-responsive" style="max-width:70%; max-height:170px; display:initial;"src="images/logos/<%= arg['classement'][i].img%>"></i>
+							</div>
+							<div>
+								<span class="fh5co-counter-number js-counter" data-from="0" data-to="<%= arg['classement'][i].pts%>" data-speed="3500" data-refresh-interval="50"></span>
+								<span class="fh5co-counter-label" style="bottom: 0;"><%= arg['classement'][i].nom%></span>
+							</div>
+						</div>
+					</div>
+				<% } %>
+			</div>
+		</div>
+	</section>
+
+	<section id="fh5co-services" data-section="evenements">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-left">
+					<h2 class=" left-border to-animate">Événements</h2>
+					<div class="row">
+						<div class="col-md-8 subtext to-animate">
+							<h3>Pendant un an, l'équipe des JIG va vous proposer de multiples événements ! Le but ? Gagner avec votre équipe !</h3>
+							<h3>Et cette année, les 2A et 3A fusionnent selon leur spécialité et l'équipe des profs fera son grand retour dans la compétition ! </h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+					<i class="icon to-animate-2 icon-trophy"></i>
+					<h3>Bowling</h3>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				</div>
+				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+					<i class="icon to-animate-2 icon-monitor"></i>
+					<h3>Soirée Jeux-Télé</h3>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				</div>
+
+				<div class="clearfix visible-sm-block"></div>
+
+				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+					<i class="icon to-animate-2 icon-shield"></i>
+					<h3>LaserMaxx</h3>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				</div>
+				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+					<i class="icon to-animate-2 icon-flag"></i>
+					<h3>Evenement Final</h3>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<section id="fh5co-about" data-section="equipe">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="to-animate">L'équipe des JIG</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="fh5co-person text-center to-animate">
+						<figure><img src="images/person1.jpg" alt="Image"></figure>
+						<h3>Michaël</h3>
+						<span class="fh5co-position">Trésorier</span>
+						<p>Bô Jeu</p>
+						<ul class="social social-circle">
+							<li><a target="blank" href="https://www.facebook.com/michael.deniau"><i class="icon-facebook"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fh5co-person text-center to-animate">
+						<figure><img src="images/person2.jpg" alt="Image"></figure>
+						<h3>Xavier</h3>
+						<span class="fh5co-position">Président</span>
+						<p>L'exhibitonniste</p>
+						<ul class="social social-circle">
+							<li><a target="blank" href="https://www.facebook.com/farchettoxavier"><i class="icon-facebook"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fh5co-person text-center to-animate">
+						<figure><img src="images/person3.jpg" alt="Image"></figure>
+						<h3>Thibaut</h3>
+						<span class="fh5co-position">Secrétaire</span>
+						<p>La cochonne de la bande !</p>
+						<ul class="social social-circle">
+							<li><a target="blank" href="https://www.facebook.com/thibaut.mery"><i class="icon-facebook"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top:90px">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="fh5co-person text-center to-animate">
+						<figure><img src="images/person4.jpg" alt="Image"></figure>
+						<h3>Kilian</h3>
+						<span class="fh5co-position">Respo Corruption</span>
+						<p>La corruption, l'information, le pouvoir.</br> Avec moi dans votre poche, c'est la victoire assurée !	</p>
+						<ul class="social social-circle">
+							<li><a target="blank" href="https://twitter.com/Kilian_cuny"><i class="icon-twitter"></i></a></li>
+							<li><a target="blank" href="https://www.facebook.com/kilian.cuny"><i class="icon-facebook"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer id="footer" role="contentinfo">
+		<div class="container">
+			<div class="">
+				<div class="col-md-12 text-center">
+					<p>&copy; JIG TELECOM Nancy <br>Developpé par Kilian</p>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<ul class="social social-circle">
+						<li><a target="blank" href="https://www.facebook.com/JeuxInterGroupes/"><i class="icon-facebook"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Counter -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Google Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="js/google_map.js"></script>
+
+	<!-- Main JS (Do not remove) -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
