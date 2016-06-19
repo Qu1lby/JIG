@@ -14,6 +14,42 @@ module.exports = function(app, database, io) {
       });
     });
 
+    /** **Add points** */
+    socket.on('add_point', function(data) {
+      myQuery = "INSERT INTO points(id_groupe, points) VALUES(" + data.id_groupe + ", " + data.points + ")";
+      database.executeQuery(myQuery);
+      socket.emit('end', {
+        msg: "Points ajoutés avec succès !"
+      });
+    });
+
+    /** **Add paris** */
+    socket.on('add_pari', function(data) {
+      myQuery = "INSERT INTO pari VALUES(" + data.id_event + ", " + data.id_groupe + ", " + data.id_groupe_pari + ", " + data.points + ")";
+      database.executeQuery(myQuery);
+      socket.emit('end', {
+        msg: "Pari ajouté avec succès !"
+      });
+    });
+
+    /** **Delete an event** */
+    socket.on('del_pari', function(data) {
+      myQuery = "DELETE FROM pari WHERE id = " + data.id_pari;
+      database.executeQuery(myQuery);
+      socket.emit('end', {
+        msg: "Pari supprimé avec succès !"
+      });
+    });
+
+    /** **Delete an event** */
+    socket.on('del_point', function(data) {
+      myQuery = "DELETE FROM points WHERE id = " + data.id_point;
+      database.executeQuery(myQuery);
+      socket.emit('end', {
+        msg: "Points supprimés avec succès !"
+      });
+    });
+
     /** **Delete an event** */
     socket.on('del_event', function(data) {
       myQuery = "DELETE FROM evenements WHERE id = " + data.id_event;

@@ -54,8 +54,7 @@
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="#" data-nav-section="Evenements"><span>Événements</span></a></li>
-								<li><a href="#" data-nav-section="Points"><span>Points</span></a></li>
-								<li><a href="#" data-nav-section="Paris"><span>Paris</span></a></li>
+								<li><a href="#" data-nav-section="Points"><span>Points & Paris</span></a></li>
 								<li><a href="#" data-nav-section="Configurations"><span>Configurations</span></a></li>
 		          </ul>
 		        </div>
@@ -105,41 +104,62 @@
 	<section id="fh5co-services" data-section="Points">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 section-heading text-left">
+				<div class="col-md-12 section-heading text-left" style="padding-bottom:0px; margin-bottom: 20px">
 					<h2 class=" left-border to-animate">Gestion des Points</h2>
-					<div class="row">
-						<div class="col-md-8 subtext to-animate">
-							<h3>Pendant un an, l'équipe des JIG va vous proposer de multiples événements ! Le but ? Gagner avec votre équipe !</h3>
-							<h3>Et cette année, les 2A et 3A fusionnent selon leur spécialité et l'équipe des profs fera son grand retour dans la compétition ! </h3>
-						</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="sel1">Groupe :</label>
+						<select class="form-control" id="sel1">
+							<% for (var i = 0; i < arg['groupes'].length; i++){ %>
+								<option id="<%=arg['groupes'][i].id%>"><%=arg['groupes'][i].nom%></option>
+							<% } %>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="sel1">Points :</label>
+  					<input type="number" class="form-control" id="points">
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="sel1"></label>
+						<button id="addP" style="background-color:rgba(240, 240, 240, 0.5); margin-top: 50px; color:white">Valider</button>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
-					<i class="icon to-animate-2 icon-trophy"></i>
-					<h3>Bowling</h3>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				<div class="col-md-12 section-heading text-left" style="margin-top:50px; margin-bottom: 20px;  padding-bottom:0px; ">
+					<h2 class=" left-border to-animate">Gestion des Paris</h2>
 				</div>
-				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
-					<i class="icon to-animate-2 icon-monitor"></i>
-					<h3>Soirée Jeux-Télé</h3>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				<div class="col-md-12" style="margin-bottom:10px">
+				<% if (arg['events'] != undefined){ %><%= arg['events'][0].libelle %> <% } %>
 				</div>
 
-				<div class="clearfix visible-sm-block"></div>
-
-				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
-					<i class="icon to-animate-2 icon-shield"></i>
-					<h3>LaserMaxx</h3>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="sel1">Groupe :</label>
+						<select class="form-control" id="sel1">
+							<% for (var i = 0; i < arg['groupes'].length; i++){ %>
+								<option id="<%=arg['groupes'][i].id%>"><%=arg['groupes'][i].nom%></option>
+							<% } %>
+						</select>
+					</div>
 				</div>
-				<div class="col-md-6 col-sm-6 fh5co-service to-animate">
-					<i class="icon to-animate-2 icon-flag"></i>
-					<h3>Evenement Final</h3>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean</p>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="sel1">Points :</label>
+						<input type="number" class="form-control" id="points_give">
+					</div>
 				</div>
-
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="sel1"></label>
+						<button style="background-color:rgba(240, 240, 240, 0.5); margin-top: 50px; color:white">Parier</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -152,10 +172,14 @@
 					<div class="col-md-12 section-heading text-left">
 						<h2 class=" left-border to-animate">Configurations</h2>
 						<div class="row">
-							<div class="col-md-8 subtext to-animate">
-								<button id="reset_first" style="background-color:rgba(240, 240, 240, 0.5); color:white"><i style="margin-right:15px" class="icon icon-loop"></i>Réinitaliser tout</button>
-								<button style="display:none; background-color:rgba(240, 240, 240, 0.5); color:white" id="reset_all">Confirmer la suppression de toute la base ?</button>
-								<button style="display:none; background-color:rgba(240, 240, 240, 0.5); color:white" id="reset_all_final">Tu fais de la merde !</button>
+							<div class="col-md-12 subtext to-animate">
+								<button id="reset_first" style="background-color:rgba(240, 240, 240, 0.5); color:white"><i style="margin-right:15px" class="icon icon-loop"></i>Réinitaliser la base</button>
+								<button style="display:none; background-color:rgba(240, 240, 240, 0.5); color:white" id="reset_all"><i style="margin-right:15px" class="icon icon-check"></i>Confirmer la suppression des données ?</button>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 20px">
+							<div class="col-md-5 subtext to-animate">
+								<a href= "/logout"><button style="background-color:rgba(240, 240, 240, 0.5); color:white"><i style="margin-right:15px" class="glyphicon glyphicon-off"></i>Deconnection</button></a>
 							</div>
 						</div>
 					</div>
@@ -221,15 +245,17 @@
 			});
 		});
 
+		$("#addP").on('click', function() {
+			socket.emit('add_point', {
+				lib_event : document.getElementById("event_input").value
+			});
+		});
+
 		$("#reset_first").on('click', function() {
 			document.getElementById("reset_all").style.display = 'initial'
 		});
 
 		$("#reset_all").on('click', function() {
-			document.getElementById("reset_all_final").style.display = 'initial'
-		});
-
-		$("#reset_all_final").on('click', function() {
 			socket.emit('reset_data');
 		});
 

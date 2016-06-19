@@ -6,7 +6,7 @@ module.exports = function(app, database, io, passport, pass_hash, router) {
 
     /* Classement des groupes */
     database.executeQuery("SELECT id_groupe, nom, img, sum(points) as pts FROM `groupes`, `points` " +
-    "WHERE points.id_groupe = groupes.id GROUP BY id_groupe ORDER BY pts DESC",
+    "WHERE points.id_groupe = groupes.id GROUP BY id_groupe ORDER BY pts DESC LIMIT 12",
       function(res_points) {
         database.executeQuery("SELECT libelle, date, id_event, id_groupe, id_groupe_pari,  SUM(points) as points, g1.nom as nom_parieur, g1.img as img_parieur, g2.nom as nom_pari, g2.img as img_pari " +
         " FROM `evenements`, `pari`, `groupes` as g1,`groupes` as g2  WHERE evenements.id = pari.id_event AND g1.id = pari.id_groupe AND g2.id = pari.id_groupe_pari AND evenements.date = (SELECT MAX(date) FROM evenements) GROUP BY id_groupe_pari ORDER BY points DESC",
@@ -50,7 +50,16 @@ module.exports = function(app, database, io, passport, pass_hash, router) {
     database.executeQuery("SELECT * FROM evenements ORDER BY date DESC", function(res_event) {
       var arg = [];
       arg['events'] = res_event;
-      giveRender(req, res, 'admin.ejs', 'Home - Administrateur', arg);
+      database.executeQuery("SELECT * FROM pari ORDER BY id_event DESC", function(res_pari) {
+        arg['pari'] = res_pari;
+        database.executeQuery("SELECT * FROM points ORDER BY date DESC", function(res_points) {
+          arg['points'] = res_points;
+          database.executeQuery("SELECT id,nom FROM groupes", function(res_groupes) {
+            arg['groupes'] = res_groupes;
+            giveRender(req, res, 'admin.ejs', 'Home - Administrateur', arg);
+          });
+        });
+      });
     });
   });
 

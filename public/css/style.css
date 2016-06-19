@@ -33,10 +33,10 @@ th, td, tr {
     padding: 8px;
 }
 
-tr:nth-child(even){background-color: rgba(242, 242, 242, 0.22)}
+tr:nth-child(even){background-color: rgba(242, 242, 242, 0.22);}
 
 th {
-    background-color: rgba(147, 224, 77, 1);
+    background-color: rgba(153, 153, 153, 0.73);
     color: white;
 }
 
@@ -47,7 +47,7 @@ a {
   transition: 0.5s;
 }
 a:hover, a:active, a:focus {
-  color: #929292;
+  color: rgb(243, 94, 94);
   outline: none;
 }
 
@@ -240,7 +240,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: 0.3s;
   }
   #fh5co-header #navbar li a:hover {
-    color: rgba(255, 22, 22, 0.45) !important;
+    color: rgb(243, 94, 94) !important;
   }
   #fh5co-header #navbar li a span:before {
     background: transparent !important;
@@ -248,7 +248,7 @@ h1, h2, h3, h4, h5, h6 {
   #fh5co-header #navbar li.active a {
     background: transparent;
     background: none;
-    color: rgba(147, 224, 77, 1); !important;
+    color: rgb(243, 94, 94) !important;
   }
   #fh5co-header #navbar li.active a span:before {
     visibility: visible;
@@ -346,13 +346,13 @@ h1, h2, h3, h4, h5, h6 {
 #fh5co-header.navbar-fixed-top #navbar li.active a {
   background: transparent;
   background: none;
-  color: rgba(147, 224, 77, 1);
+  color: rgb(243, 94, 94);
 }
 #fh5co-header.navbar-fixed-top #navbar li.active a span:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
-  background-color: rgba(147, 224, 77, 1);
+  background-color: rgba(255, 22, 22, 0.45);
 }
 #fh5co-header .navbar-default {
   border: transparent;
@@ -1094,7 +1094,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   width: 80px;
   height: 2px;
-  background: rgba(147, 224, 77, 1);
+  background: rgb(243, 94, 94);
   left: 50%;
   margin-left: -40px;
   bottom: 0;

@@ -13,20 +13,6 @@
 	<meta name="keywords" content="JIG, TELECOM Nancy" />
 	<meta name="author" content="Kilian Cuny" />
 
-  <!--
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE
-	DESIGNED & DEVELOPED by FREEHTML5.CO
-
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
 
@@ -105,7 +91,7 @@
 							<h3>Les paris sont un bon moyen de gagner (ou de perdre) des points !</h3>
               <% if(arg['pari'].length != 0) { %>
   							<h4 style="text-aligne:center"><%= arg['pari'][0].libelle %></h4>
-  							<table>
+  							<table style="border: 1px #ffffff groove;">
   							  <tr>
   									<th>Pari sur</th>
   							    <th>Total des points</th
@@ -146,16 +132,16 @@
 
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<% if (i%2 == 0){ %>
-							<div class="fh5co-counter" style="text-align: center; background-color:rgba(147, 224, 77, 0.4); border: 1px groove #ddd;">
+							<div class="fh5co-counter" style="text-align: center; background-color:rgba(29, 29, 29, 0); border: 1px groove #ddd;">
 						<%} else {%>
 							<div class="fh5co-counter" style="text-align: center; background-color:rgba(146, 146, 146, 0.76); border: 1px groove #ddd;">
 						<% } %>
 
 							<span class="fh5co-counter-label" style="color: rgba(255, 255, 255, 0.7)">
 								<% if (i==0){ %>
-									<%=i+1 %>er
+									<span style="font-weight: bold"><%=i+1 %>er</span>
 								<%} else {%>
-									<%= i + 1%><span style="font-size:0.9em">e</span>
+									<span style="font-size:0.9em; font-weight: bold"><%= i + 1%>e</span>
 								<% } %>
 							</span>
 							<div style="height:180px; vertical-align: middle;">
@@ -257,7 +243,7 @@
 				</div>
 			</div>
 			<div class="row" style="margin-top:90px">
-				<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-5 col-md-offset-1">
 					<div class="fh5co-person text-center to-animate">
 						<figure><img src="images/person4.jpg" alt="Image"></figure>
 						<h3>Kilian</h3>
@@ -266,6 +252,17 @@
 						<ul class="social social-circle">
 							<li><a target="blank" href="https://twitter.com/Kilian_cuny"><i class="icon-twitter"></i></a></li>
 							<li><a target="blank" href="https://www.facebook.com/kilian.cuny"><i class="icon-facebook"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-5 col-md-offset-1">
+					<div class="fh5co-person text-center to-animate">
+						<figure><img src="images/person5.jpg" alt="Image"></figure>
+						<h3>Gauthier</h3>
+						<span class="fh5co-position">Respo BDE</span>
+						<p>Gauthier <3	</p>
+						<ul class="social social-circle">
+							<li><a target="blank" href="https://www.facebook.com/gauthier.demangeon"><i class="icon-facebook"></i></a></li>
 						</ul>
 					</div>
 				</div>
