@@ -55,7 +55,7 @@ require('./app/routes.js')(app, database, io, passport, pass_hash, router);
 require('./app/socket.js')(app, database, io);
 
 /**** Connection DB - Server ****/
-database.connect('localhost', 'root', '', 'jig');
+database.connect('localhost', 'root', 'root', 'jig');
 
 /**** Listenning ****/
 server.listen(3000);

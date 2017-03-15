@@ -39,6 +39,22 @@ database = module.exports = {
     });
   },
 
+  /* Get result of Query */
+  getResult: function (myQuery, callback) {
+    var res = this.mySqlClient.query(myQuery, function select(error, results, fields) {
+
+      if (error) {
+        console.log('[ERR] ' + error);
+        console.log('[QUERY] ' + myQuery);
+        return;
+      }
+
+      if (callback != undefined)
+        return results;
+
+    });
+          },
+
   /* Escape character */
   escape: function (data) {
     return this.mySqlClient.escape(data);

@@ -70,21 +70,21 @@
 				<div class="text-inner">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h2 class="to-animate" style="color: rgba(255, 255, 255, 1)">Ajouter/Supprimer un événement et les Points/Paris associés</h2>
+							<h2 class="to-animate" style="color: rgba(255, 255, 255, 1)">Ajouter un commentaire ou note (tel personne a gagné au poker à la table tant)</h2>
 							<div class="row" style="margin-top:50px">
 								<div class="col-md-8 col-md-offset-2" style="color:black">
-									<input id="event_input" maxlength="300" style="width:70%;background-color:rgba(240, 240, 240, 0.5)" type="text">
-									<button style="background-color:rgba(240, 240, 240, 0.5)" id="add_event"><i class="icon icon-plus"></i></button>
+									<input id="commentaire_input" maxlength="300" style="width:70%;background-color:rgba(240, 240, 240, 0.5)" type="text">
+									<button style="background-color:rgba(240, 240, 240, 0.5)" id="add_commentaire"><i class="icon icon-plus"></i></button>
 									<button style="background-color:rgba(240, 240, 240, 0.5)" onClick="window.location.reload()"><i class="icon icon-refresh"></i></button>
 								</div>
 							</div>
 							<div  class="table-responsive" style="margin-top:20px; height:250px; overflow:auto; border: 1px groove rgba(146, 146, 146, 0.25)">
 								<table>
-									<% for (var i = 0; i < arg['events'].length; i++){ %>
+									<% for (var i = 0; i < arg['commentaire'].length; i++){ %>
 										<tr>
-											<td style="color:black;"><%= arg['events'][i].libelle %></td>
+											<td style="color:black;"><%= arg['commentaire'][i].commentaire %></td>
 											<td style="color:black;">
-												<a class="trash_event" href="#" id_event="<%= arg['events'][i].id %>">
+												<a class="trash_commentaire" href="#" id_commentaire="<%= arg['commentaire'][i].id %>">
 													<i class="icon to-animate icon-trash" style="color:black"></i>
 												</a>
 											</td>
@@ -107,63 +107,83 @@
 				<div class="col-md-12 section-heading text-left" style="padding-bottom:0px; margin-bottom: 20px">
 					<h2 class=" left-border to-animate">Gestion des Points</h2>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="form-group">
 						<label for="sel1">Groupe :</label>
 						<select class="form-control" id="sel1">
 							<% for (var i = 0; i < arg['groupes'].length; i++){ %>
-								<option id="<%=arg['groupes'][i].id%>"><%=arg['groupes'][i].nom%></option>
+								<option value="<%=arg['groupes'][i].id%>" id="yolo"><%=arg['groupes'][i].nom%></option>
 							<% } %>
 						</select>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<div class="form-group">
 						<label for="sel1">Points :</label>
   					<input type="number" class="form-control" id="points">
 					</div>
 				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						<label >Information :</label>
+  					<input type="string" class="form-control" id="information">
+					</div>
+				</div>
 				<div class="col-md-2">
 					<div class="form-group">
 						<label for="sel1"></label>
-						<button id="addP" style="background-color:rgba(240, 240, 240, 0.5); margin-top: 50px; color:white">Valider</button>
+						<button id="add_point" style="background-color:rgba(240, 240, 240, 0.5); margin-top: 50px; color:white">Valider</button>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12 section-heading text-left" style="margin-top:50px; margin-bottom: 20px;  padding-bottom:0px; ">
-					<h2 class=" left-border to-animate">Gestion des Paris</h2>
-				</div>
-				<div class="col-md-12" style="margin-bottom:10px">
-				<% if (arg['events'] != undefined){ %><%= arg['events'][0].libelle %> <% } %>
-				</div>
+			<div class="gradient"></div>
+			<div class="container">
+				<div class="text-wrap" style="height:450px">
+					<div class="text-inner">
+						<div class="row">
+							<div class="col-md-12 col-md-offset-0">
 
-				<div class="col-md-4">
-					<div class="form-group">
-						<label for="sel1">Groupe :</label>
-						<select class="form-control" id="sel1">
-							<% for (var i = 0; i < arg['groupes'].length; i++){ %>
-								<option id="<%=arg['groupes'][i].id%>"><%=arg['groupes'][i].nom%></option>
+					<div  class="table-responsive" style="margin-top:20px; height:400px; overflow:auto; border: 1px groove rgba(146, 146, 146, 0.25)">
+						<table>
+							<% for (var i = 0; i < arg['points'].length; i++){ %>
+								<tr>
+									<td style="color:black;"><%= arg['points'][i].points %></td>
+									<td style="color:black;"><%= arg['points'][i].date %></td>
+									<% for(var k = 0 ; k < arg['groupes'].length ; k++){ %>
+									<%if (arg['groupes'][k].id == arg['points'][i].id_groupe){%>
+									<td style="color:black;"><%=arg['groupes'][k].nom%></td>
+									<% }} %>
+									<td style="color:black;"><%= arg['points'][i].information %></td>
+									<td style="color:black;">
+										<a class="trash_points" href="#" id_points="<%= arg['points'][i].id %>">
+											<i class="icon to-animate icon-trash" style="color:black"></i>
+										</a>
+									</td>
+								</tr>
 							<% } %>
-						</select>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label for="sel1">Points :</label>
-						<input type="number" class="form-control" id="points_give">
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="form-group">
-						<label for="sel1"></label>
-						<button style="background-color:rgba(240, 240, 240, 0.5); margin-top: 50px; color:white">Parier</button>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+</div>
+</div>
+				</div>
+				<div class="slant"></div>
+		</section>
 
+<section id="fh5co-services" data-section="evenements">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 section-heading text-left" style="padding-bottom:0px; margin-bottom: 20px">
+				<h2 class=" left-border to-animate">Gestion des évènements</h2>
+			</div>
+			<div class="gradient"></div>
+			<div class="container"></div>
+		</div>
+	</div>
+</section>
 
 	<section id="fh5co-counters" data-section="Configurations">
 		<div class="fh5co-overlay"></div>
@@ -233,21 +253,29 @@
 	<script>
 	  var socket = io();
 
-		$(".trash_event").on('click', function() {
-			socket.emit('del_event', {
-				id_event : $(this).attr('id_event')
+		$(".trash_commentaire").on('click', function() {
+			socket.emit('del_commentaire', {
+				id_commentaire : $(this).attr('id_commentaire')
 			});
 		});
 
-		$("#add_event").on('click', function() {
-			socket.emit('add_event', {
-				lib_event : document.getElementById("event_input").value
+		$(".trash_points").on('click', function() {
+			socket.emit('del_points', {
+				id_point : $(this).attr('id_points')
 			});
 		});
 
-		$("#addP").on('click', function() {
+		$("#add_commentaire").on('click', function() {
+			socket.emit('add_commentaire', {
+				commentaire : document.getElementById("commentaire_input").value
+			});
+		});
+
+		$("#add_point").on('click', function() {
 			socket.emit('add_point', {
-				lib_event : document.getElementById("event_input").value
+				id_groupe : document.getElementById("sel1").value,
+				points : document.getElementById("points").value,
+				information : document.getElementById("information").value
 			});
 		});
 
